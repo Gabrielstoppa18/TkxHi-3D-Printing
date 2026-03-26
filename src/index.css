@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-body: "Space Grotesk", sans-serif;
+  --font-label: "Space Grotesk", sans-serif;
+
+  --color-surface: #f8faf8;
+  --color-on-surface: #191c1b;
+  --color-on-surface-variant: #3e4a3a;
+  
+  /* Verde (Green) */
+  --color-primary: #00a725;
+  --color-primary-container: #125925;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #82ff72;
+  --color-green-light: #82ff72;
+  --color-green-standard: #00a725;
+  --color-green-dark: #18702e;
+  --color-green-deep: #125925;
+  --color-green-fluorescent: #4dff73;
+  
+  /* Laranja (Orange) */
+  --color-secondary: #fe7c20;
+  --color-secondary-container: #ff6400;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #cd5d01;
+  --color-orange-light: #fea520;
+  --color-orange-standard: #fe7c20;
+  --color-orange-dark: #e1511b;
+  --color-orange-deep: #cd5d01;
+  --color-orange-fluorescent: #ff6400;
+  
+  /* Roxo (Purple) */
+  --color-tertiary: #822ca3;
+  --color-tertiary-container: #350049;
+  --color-on-tertiary: #ffffff;
+  --color-purple-light: #d457c7;
+  --color-purple-standard: #822ca3;
+  --color-purple-dark: #250469;
+  --color-purple-deep: #350049;
+  --color-purple-fluorescent: #a020f0;
+  
+  --color-accent-green: #4dff73;
+  --color-on-accent-green: #125925;
+  
+  --color-surface-container: #eceeec;
+  --color-surface-container-low: #f2f4f2;
+  --color-surface-container-high: #e6e9e7;
+  --color-surface-container-highest: #e1e3e1;
+  --color-surface-container-lowest: #ffffff;
+  
+  --color-outline: #6d7b68;
+  --color-outline-variant: #bccbb6;
+}
+
+@layer base {
+  body {
+    @apply bg-surface font-body text-on-surface;
+  }
+}
+
+.bg-grid-pattern {
+  background-image: radial-gradient(circle, #bccbb6 1px, transparent 1px);
+  background-size: 24px 24px;
+}
