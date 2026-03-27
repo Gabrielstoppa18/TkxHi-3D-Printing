@@ -163,6 +163,7 @@ export function Home() {
             </h2>
             <div className="space-y-8">
               {[
+                
                 { step: "01", title: "Exploração", icon: Bolt, desc: "Análise de viabilidade técnica e escolha do material ideal para o projeto." },
                 { step: "02", title: "Prototipagem", icon: Brain, desc: "Fatiamento avançado e execução em nossas máquinas de alta fidelidade." },
                 { step: "03", title: "Finalização", icon: Sparkles, desc: "Tratamento de superfície e entrega técnica com laudo de qualidade." }
