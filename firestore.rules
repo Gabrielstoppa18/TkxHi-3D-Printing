@@ -1,0 +1,75 @@
+// ===============================================================
+// Assumed Data Model
+// ===============================================================
+//
+// Collection: waitlist
+// Document ID: auto-generated
+// Fields:
+//   - name: string (required, 1-100 chars)
+//   - email: string (required, email format)
+//   - knowledgeLevel: string (required, enum: ['Nenhum', 'Básico', 'Intermediário'])
+//   - createdAt: timestamp (required)
+//   - uid: string (optional, for tracking if authenticated)
+//
+// ===============================================================
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+          (request.auth.token.email == "gabrielstoppa@gmail.com" && request.auth.token.email_verified == true));
+    }
+
+    function isValidEmail(email) {
+      return email is string &&
+        email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    }
+
+    function isValidWaitlistEntry(data) {
+      return data.keys().hasAll(['name', 'email', 'knowledgeLevel', 'createdAt']) &&
+             data.keys().hasOnly(['name', 'email', 'knowledgeLevel', 'createdAt', 'uid']) &&
+             data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             isValidEmail(data.email) &&
+             data.knowledgeLevel in ['Nenhum', 'Básico', 'Intermediário'] &&
+             data.createdAt is timestamp;
+    }
+
+    // ===============================================================
+    // Collection Rules
+    // ===============================================================
+
+    match /waitlist/{entryId} {
+      // Allow anyone to join the waitlist (public form)
+      // We use strict validation to prevent abuse.
+      allow create: if isValidWaitlistEntry(request.resource.data);
+      
+      // Only admins can view the waitlist
+      allow read: if isAdmin();
+      
+      // No updates or deletes allowed for waitlist entries once submitted
+      allow update, delete: if isAdmin();
+    }
+
+    match /users/{userId} {
+      allow read: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+      allow create, update: if isAuthenticated() && (request.auth.uid == userId) && 
+        (!('role' in request.resource.data) || request.resource.data.role == 'user' || isAdmin());
+    }
+
+    // Default deny
+    match /{path=**} {
+      allow read, write: if false;
+    }
+  }
+}

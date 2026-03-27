@@ -1,9 +1,67 @@
-import React from 'react';
-import { motion } from 'motion/react';
-import { Bolt, School, Rocket, Factory, Check, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Bolt, School, Rocket, Factory, Check, ArrowRight, Loader2, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { db, handleFirestoreError, OperationType } from '../firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 export function Register() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [knowledgeLevel, setKnowledgeLevel] = useState('Nenhum');
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name || !email) return;
+
+    setIsLoading(true);
+    try {
+      const waitlistRef = collection(db, 'waitlist');
+      await addDoc(waitlistRef, {
+        name,
+        email,
+        knowledgeLevel,
+        createdAt: serverTimestamp(),
+      });
+      setIsSuccess(true);
+    } catch (error) {
+      handleFirestoreError(error, OperationType.CREATE, 'waitlist');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  if (isSuccess) {
+    return (
+      <div className="min-h-screen flex flex-col bg-surface">
+        <main className="flex-grow flex items-center justify-center p-6">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="max-w-md w-full bg-surface-container-lowest p-10 rounded-3xl shadow-2xl border border-outline-variant/10 text-center space-y-6"
+          >
+            <div className="w-20 h-20 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-4">
+              <CheckCircle2 size={40} />
+            </div>
+            <h2 className="text-3xl font-bold text-on-surface">Você está na lista!</h2>
+            <p className="text-on-surface-variant leading-relaxed">
+              Obrigado pelo interesse, <strong>{name}</strong>! <br />
+              Enviamos um e-mail de confirmação para <strong>{email}</strong>. Fique atento às novidades da edição 2026.
+            </p>
+            <Link 
+              to="/"
+              className="inline-block w-full bg-primary text-white font-bold py-4 rounded-xl hover:bg-primary-container transition-all"
+            >
+              Voltar para o Início
+            </Link>
+          </motion.div>
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-surface">
       <main className="flex-grow pt-24 pb-12 px-4 md:px-0">
@@ -64,11 +122,14 @@ export function Register() {
                 </div>
                 <h2 className="text-2xl font-bold text-on-surface">Lista de Espera</h2>
               </div>
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="space-y-4">
                   <div className="relative group">
                     <label className="block text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-1 ml-1">Nome Completo</label>
                     <input 
+                      required
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                       className="w-full px-4 py-3 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary transition-all text-on-surface placeholder:text-on-surface-variant/40" 
                       placeholder="Ex: Alex Silva" 
                       type="text"
@@ -77,6 +138,9 @@ export function Register() {
                   <div className="relative group">
                     <label className="block text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-1 ml-1">E-mail para Contato</label>
                     <input 
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       className="w-full px-4 py-3 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary transition-all text-on-surface placeholder:text-on-surface-variant/40" 
                       placeholder="alex@exemplo.com" 
                       type="email"
@@ -89,11 +153,17 @@ export function Register() {
                   <div className="grid grid-cols-1 gap-3">
                     {[
                       { title: "Nenhum", desc: "Nunca tive contato com impressoras 3D", icon: School, color: "primary" },
-                      { title: "Básico", desc: "Já vi vídeos ou conheço o conceito", icon: Rocket, color: "secondary" },
-                      { title: "Intermediário", desc: "Já imprimi algumas peças", icon: Factory, color: "tertiary" }
+                      { title: "Básico", desc: "Já imprimi algumas peças", icon: Rocket, color: "secondary" },
+                      { title: "Intermediário", desc: "Tenho minha própria impressora e conheço o processo", icon: Factory, color: "tertiary" }
                     ].map((opt, i) => (
-                      <label key={i} className={`relative flex items-center p-4 bg-surface rounded-xl border border-outline-variant/20 cursor-pointer hover:bg-${opt.color}/5 transition-colors group`}>
-                        <input className="hidden peer" name="level" type="radio" defaultChecked={i === 0} />
+                      <label key={i} className={`relative flex items-center p-4 bg-surface rounded-xl border border-outline-variant/20 cursor-pointer hover:bg-${opt.color}/5 transition-colors group ${knowledgeLevel === opt.title ? 'ring-2 ring-primary bg-primary/5' : ''}`}>
+                        <input 
+                          className="hidden peer" 
+                          name="level" 
+                          type="radio" 
+                          checked={knowledgeLevel === opt.title}
+                          onChange={() => setKnowledgeLevel(opt.title)}
+                        />
                         <div className={`w-10 h-10 rounded-lg bg-${opt.color}/10 flex items-center justify-center mr-4 group-hover:scale-110 transition-transform text-${opt.color}`}>
                           <opt.icon size={20} />
                         </div>
@@ -101,7 +171,7 @@ export function Register() {
                           <span className="block font-bold text-on-surface">{opt.title}</span>
                           <span className="text-xs text-on-surface-variant">{opt.desc}</span>
                         </div>
-                        <div className={`peer-checked:flex hidden absolute right-4 w-6 h-6 bg-${opt.color} rounded-full items-center justify-center text-white`}>
+                        <div className={`${knowledgeLevel === opt.title ? 'flex' : 'hidden'} absolute right-4 w-6 h-6 bg-${opt.color} rounded-full items-center justify-center text-white`}>
                           <Check size={14} />
                         </div>
                       </label>
@@ -109,9 +179,19 @@ export function Register() {
                   </div>
                 </div>
 
-                <button className="w-full bg-primary hover:bg-primary-container text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.01] active:scale-95 transition-all flex items-center justify-center gap-2">
-                  <span>Entrar na Lista de Espera</span>
-                  <ArrowRight size={20} />
+                <button 
+                  disabled={isLoading}
+                  type="submit"
+                  className="w-full bg-primary hover:bg-primary-container disabled:opacity-70 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.01] active:scale-95 transition-all flex items-center justify-center gap-2"
+                >
+                  {isLoading ? (
+                    <Loader2 className="animate-spin" size={20} />
+                  ) : (
+                    <>
+                      <span>Entrar na Lista de Espera</span>
+                      <ArrowRight size={20} />
+                    </>
+                  )}
                 </button>
 
                 <p className="text-center text-[10px] text-on-surface-variant/60 leading-relaxed px-4">
@@ -123,18 +203,6 @@ export function Register() {
         </div>
       </main>
 
-      <footer className="mt-auto border-t border-outline-variant/10 py-8 px-6">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[12px] font-medium text-on-surface-variant opacity-50">
-            © 2026 TkxHi Precision Systems. Todos os direitos reservados.
-          </p>
-          <div className="flex gap-6">
-            {['Suporte', 'Segurança', 'Termos'].map((link, i) => (
-              <a key={i} className="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">{link}</a>
-            ))}
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
