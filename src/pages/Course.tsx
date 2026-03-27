@@ -89,42 +89,50 @@ export function Course() {
             {
               title: "Introdução",
               icon: Factory,
-              color: "primary",
-              textColor: "primary",
+              color: "bg-primary",
+              textColor: "text-primary",
+              hoverBorder: "hover:border-primary/20",
+              shadow: "shadow-primary/20",
               desc: "História, tecnologias (FDM, SLA, SLS), Projeto RepRap e anatomia da impressora Ender 3."
             },
             {
               title: "Manutenção",
               icon: Bolt,
-              color: "secondary-container",
-              textColor: "secondary",
+              color: "bg-secondary-container",
+              textColor: "text-secondary",
+              hoverBorder: "hover:border-secondary/20",
+              shadow: "shadow-secondary-container/20",
               desc: "Preservação, limpeza, lubrificação, troca de filamento e solução de falhas comuns como warping e stringing."
             },
             {
               title: "Configuração",
               icon: Layers,
-              color: "tertiary",
-              textColor: "tertiary",
+              color: "bg-tertiary",
+              textColor: "text-tertiary",
+              hoverBorder: "hover:border-tertiary/20",
+              shadow: "shadow-tertiary/20",
               desc: "Painel de controle, pré-aquecimento, nivelamento da mesa (Bed Levelling) e distância correta do bico."
             },
             {
               title: "Fatiamento",
               icon: Rocket,
-              color: "green-fluorescent",
-              textColor: "green-dark",
+              color: "bg-green-light",
+              textColor: "text-green-light",
+              hoverBorder: "hover:border-green-light/20",
+              shadow: "shadow-green-light/20",
               desc: "Domínio do OrcaSlicer: parâmetros de qualidade, resistência, suportes e calibração avançada."
             }
           ].map((module, idx) => (
             <motion.div
               key={idx}
               whileHover={{ y: -5 }}
-              className={`group bg-white hover:bg-surface-container-lowest transition-all p-8 rounded-[2rem] flex flex-col justify-start min-h-[320px] border border-outline-variant/10 hover:border-${module.textColor}/20 shadow-sm hover:shadow-xl`}
+              className={`group bg-white hover:bg-surface-container-lowest transition-all p-8 rounded-[2rem] flex flex-col justify-start min-h-[320px] border border-outline-variant/10 ${module.hoverBorder} shadow-sm hover:shadow-xl`}
             >
               <div className="space-y-4">
-                <div className={`w-14 h-14 rounded-2xl bg-${module.color} flex items-center justify-center text-white shadow-lg shadow-${module.color}/20 group-hover:scale-110 transition-transform`}>
+                <div className={`w-14 h-14 rounded-2xl ${module.color} flex items-center justify-center text-white shadow-lg ${module.shadow} group-hover:scale-110 transition-transform`}>
                   <module.icon size={30} />
                 </div>
-                <h3 className={`text-xl font-bold text-${module.textColor}`}>{module.title}</h3>
+                <h3 className={`text-xl font-bold ${module.textColor}`}>{module.title}</h3>
                 <p className="text-on-surface-variant text-sm leading-relaxed">{module.desc}</p>
               </div>
             </motion.div>
@@ -139,16 +147,16 @@ export function Course() {
             <h2 className="text-4xl font-bold tracking-tight text-on-surface">Especificações Técnicas</h2>
             <div className="space-y-6">
               {[
-                { label: "Materiais Abordados", color: "primary", items: ["PLA", "ABS", "PETG", "TPU", "Nylon", "Policarbonato", "Compósitos"] },
-                { label: "Ecossistema de Software", color: "secondary", items: ["OrcaSlicer", "Cura", "PrusaSlicer", "Tinkercad", "Fusion 360", "Blender"] },
+                { label: "Materiais Abordados", bgColor: "bg-primary", textColor: "text-primary", dotColor: "bg-primary", items: ["PLA", "ABS", "PETG", "TPU", "Nylon", "Policarbonato", "Compósitos"] },
+                { label: "Ecossistema de Software", bgColor: "bg-secondary", textColor: "text-secondary", dotColor: "bg-secondary", items: ["OrcaSlicer", "Cura", "PrusaSlicer", "Tinkercad", "Fusion 360", "Blender"] },
               ].map((spec, idx) => (
                 <div key={idx} className="flex items-start gap-4">
-                  <div className={`mt-1 w-2 h-2 rounded-full bg-${spec.color} flex-shrink-0`}></div>
+                  <div className={`mt-1 w-2 h-2 rounded-full ${spec.dotColor} flex-shrink-0`}></div>
                   <div>
                     <h4 className="font-bold text-on-surface mb-2 uppercase text-xs tracking-widest">{spec.label}</h4>
                     <div className="flex flex-wrap gap-2">
                       {spec.items.map((item, i) => (
-                        <span key={i} className={`bg-${spec.color}/10 text-${spec.color} px-3 py-1 rounded-full text-[11px] font-bold`}>
+                        <span key={i} className={`${spec.bgColor}/10 ${spec.textColor} px-3 py-1 rounded-full text-[11px] font-bold`}>
                           {item}
                         </span>
                       ))}
@@ -177,9 +185,9 @@ export function Course() {
           <div className="relative hidden lg:block">
             <div className="absolute inset-0 flex flex-col justify-center gap-8">
               {[
-                { label: "Precisão de Camada", val: 98, color: "primary" },
-                { label: "Otimização de Tempo", val: 45, color: "secondary" },
-                { label: "Qualidade Estética", val: 85, color: "tertiary" },
+                { label: "Precisão de Camada", val: 98, color: "bg-primary" },
+                { label: "Otimização de Tempo", val: 45, color: "bg-secondary" },
+                { label: "Qualidade Estética", val: 85, color: "bg-tertiary" },
               ].map((gauge, idx) => (
                 <div key={idx} className="space-y-2">
                   <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-on-surface-variant">
@@ -191,7 +199,7 @@ export function Course() {
                       initial={{ width: 0 }}
                       animate={{ width: `${gauge.val}%` }}
                       transition={{ duration: 1, delay: 0.5 + idx * 0.2 }}
-                      className={`h-full bg-${gauge.color}`}
+                      className={`h-full ${gauge.color}`}
                     ></motion.div>
                   </div>
                 </div>

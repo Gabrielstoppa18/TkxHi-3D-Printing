@@ -16,7 +16,7 @@ export function Home() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label text-sm mb-6 tracking-widest">
+            <span className="inline-block px-3 py-1 rounded-full bg-secondary-container text-white font-label text-sm mb-6 tracking-widest">
               TECNOLOGIA 3D
             </span>
             <h1 className="font-headline text-5xl md:text-7xl font-bold tracking-tighter leading-none text-on-surface mb-6">
@@ -153,7 +153,7 @@ export function Home() {
               alt="Industrial 3D printer"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute top-4 right-4 bg-secondary-container text-on-secondary-container px-4 py-2 rounded-lg font-bold shadow-lg animate-pulse">
+            <div className="absolute top-4 right-4 bg-secondary-container text-white px-4 py-2 rounded-lg font-bold shadow-lg animate-pulse">
               SISTEMA ATIVO
             </div>
           </div>
