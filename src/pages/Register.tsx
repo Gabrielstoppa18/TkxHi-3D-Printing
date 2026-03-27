@@ -4,7 +4,6 @@ import { Bolt, School, Rocket, Factory, Check, ArrowRight, Loader2, CheckCircle2
 import { Link } from 'react-router-dom';
 import { db, handleFirestoreError, OperationType } from '../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import logoRound from '@/src/assets/logo-round.png';
 
 export function Register() {
   const [name, setName] = useState('');
@@ -116,7 +115,7 @@ export function Register() {
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 bg-white rounded-xl p-2 shadow-sm border border-outline-variant/10 flex items-center justify-center">
                   <img 
-                    src={logoRound}
+                    src="/tkx-round.png"
                     alt="TkxHi Logo" 
                     className="w-full h-full object-contain"
                   />

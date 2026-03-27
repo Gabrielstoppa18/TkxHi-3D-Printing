@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Rocket, Factory, Layers, Brush, ArrowRight, Medal, Bolt, Quote } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import logoRound from '@/src/assets/logo-round.png';
 
 export function Course() {
   return (
@@ -17,7 +16,7 @@ export function Course() {
           <div className="inline-flex items-center gap-3 bg-primary/10 text-primary px-4 py-2 rounded-full">
             <div className="w-6 h-6 bg-white rounded-full p-1 flex items-center justify-center">
               <img 
-                src={logoRound}
+                src="/tkx-round.png"
                 alt="TkxHi Logo" 
                 className="w-full h-full object-contain"
               />
