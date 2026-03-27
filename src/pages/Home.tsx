@@ -180,10 +180,6 @@ export function Home() {
                 </div>
               ))}
             </div>
-            <div className="mt-12 p-6 bg-surface-container-low rounded-2xl border-l-4 border-secondary">
-              <p className="text-on-surface italic">"A precisão da TkxHi reduziu nosso tempo de produção em 40%."</p>
-              <p className="text-secondary font-bold text-sm mt-2">— Diretor de Engenharia, TechCorp</p>
-            </div>
           </div>
         </div>
       </section>

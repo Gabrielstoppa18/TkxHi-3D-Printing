@@ -147,8 +147,8 @@ export function Course() {
             <h2 className="text-4xl font-bold tracking-tight text-on-surface">Especificações Técnicas</h2>
             <div className="space-y-6">
               {[
-                { label: "Materiais Abordados", bgColor: "bg-primary", textColor: "text-primary", dotColor: "bg-primary", items: ["PLA", "ABS", "PETG", "TPU", "Nylon", "Policarbonato", "Compósitos"] },
-                { label: "Ecossistema de Software", bgColor: "bg-secondary", textColor: "text-secondary", dotColor: "bg-secondary", items: ["OrcaSlicer", "Cura", "PrusaSlicer", "Tinkercad", "Fusion 360", "Blender"] },
+                { label: "Materiais Abordados", bgColor: "bg-primary", textColor: "text-primary", dotColor: "bg-primary", items: ["PLA (Foco Prático)", "ABS", "PETG", "TPU", "Nylon", "Policarbonato", "Compósitos"] },
+                { label: "Ecossistema de Software", bgColor: "bg-secondary", textColor: "text-secondary", dotColor: "bg-secondary", items: ["OrcaSlicer (Foco Principal)", "Cura", "PrusaSlicer", "Tinkercad", "Fusion 360", "Blender"] },
               ].map((spec, idx) => (
                 <div key={idx} className="flex items-start gap-4">
                   <div className={`mt-1 w-2 h-2 rounded-full ${spec.dotColor} flex-shrink-0`}></div>
@@ -168,88 +168,29 @@ export function Course() {
                 <div className="mt-1 w-2 h-2 rounded-full bg-tertiary flex-shrink-0"></div>
                 <div>
                   <h4 className="font-bold text-on-surface mb-2 uppercase text-xs tracking-widest">Requisitos Mínimos</h4>
-                  <p className="text-sm text-on-surface-variant">Impressora FDM com mesa aquecida e computador com 8GB RAM.</p>
+                  <p className="text-sm text-on-surface-variant">Notebook com requisitos mínimos para rodar o OrcaSlicer.</p>
                 </div>
               </div>
             </div>
             <div className="p-6 bg-white/40 rounded-2xl border border-white/60">
               <div className="flex items-center gap-4">
-                <div className="text-3xl font-black text-primary">24h+</div>
+                <div className="text-3xl font-black text-primary">+8h</div>
                 <div className="text-xs font-bold text-on-surface-variant uppercase tracking-widest leading-tight">
-                  Conteúdo em Vídeo de alta definição
+                  Práticas e Presenciais
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="relative hidden lg:block">
-            <div className="absolute inset-0 flex flex-col justify-center gap-8">
-              {[
-                { label: "Precisão de Camada", val: 98, color: "bg-primary" },
-                { label: "Otimização de Tempo", val: 45, color: "bg-secondary" },
-                { label: "Qualidade Estética", val: 85, color: "bg-tertiary" },
-              ].map((gauge, idx) => (
-                <div key={idx} className="space-y-2">
-                  <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-on-surface-variant">
-                    <span>{gauge.label}</span>
-                    <span>{gauge.val}%</span>
-                  </div>
-                  <div className="h-2 w-full bg-surface-container rounded-full overflow-hidden">
-                    <motion.div 
-                      initial={{ width: 0 }}
-                      animate={{ width: `${gauge.val}%` }}
-                      transition={{ duration: 1, delay: 0.5 + idx * 0.2 }}
-                      className={`h-full ${gauge.color}`}
-                    ></motion.div>
-                  </div>
-                </div>
-              ))}
+          <div className="relative hidden lg:flex items-center justify-center">
+            <div className="p-12 bg-primary/5 rounded-[2rem] border border-primary/10 text-center space-y-4">
+              <Rocket size={64} className="text-primary mx-auto" />
+              <h3 className="text-2xl font-bold text-on-surface">Mão na Massa</h3>
+              <p className="text-on-surface-variant text-sm max-w-xs">
+                Aprendizado focado na prática real com equipamentos profissionais e suporte individualizado.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Results & Testimonials */}
-      <section className="py-12 space-y-12">
-        <div className="text-center space-y-4">
-          <h2 className="text-4xl font-bold tracking-tight text-on-surface">Resultados & <span className="text-primary">Depoimentos</span></h2>
-          <p className="text-on-surface-variant max-w-2xl mx-auto">Veja o que nossos alunos estão produzindo e como a TkxHi transformou sua visão técnica.</p>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuB2TDRGLPrN-AYjYVwplY8N8YeHcudmfjJLynDDBW4bzQJMC9vmlVVlRD4xzs1enTzO5axht9MKYTe05S-ee1L0jj5nSFc3Yp4LFvJRcmSbMiouL6_heM4nKXxv7zJdKZVCOJA7pEiQZgvW5PCMBtuaYEwsOoVDsnL8zkB_I88De2xOvwDaxltfxDYeds3hFdG_tf4CibgW7Jr6RoQ82ySSrJVoQIgvzt6ki_2GTNp75iughuGN26ENmSuc1BAtcUS5uoP9-kfkBFU",
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuA5S5Y20IPs3WD7tDUC5JCiyxncOrRIgLbRUoaY5_XJVazQfeb2qIGTbbQ7lP0X2zkBAYoHMGQlyHK0SFoYcvG-B8pSYhStMph9gPZFajbtz1O57U_YwvzNZjxykhF_qSy5qvsh71zlVe5J2_QOfiCYtBbcTwIOKVnaCW868G9OrQhr-HL8e9YDaiCgvcWQAtYqRPbhlKDnx5IrKw9ldJ3slZ9Z2GcQhNOPNyvHELRK_Gg9WB2nkDUiqfg-YJ9S_7jJA4PcYi3WUv8",
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuAh-iAk_FyuSGaCntvN2oCTtYv06i47cksTPE5B3_oLUC7uIGoLrZ-44vXCWfsDKKQ98oeKd7hTrK-mIjsFbtbScD_25J-FKZvWv89uxW8Amq7DrBWzg0hfbJ7hhkjsOujmMwLRJpAvcI5GF5qUmm3R0Cl_kbjbtg1VeMfJa8P_oPAT9omOvLrYZyC-TRlrfLxxa9voLM8psNhI1THqoThCSZJDAlsPl7XSdKawhqaNI-0MsT7uNz8i9rJkZeJncY_h-lp0-BEjgtU",
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuCynrekSoctkPTLp5_Pm4FR-P7InIICaFL-Ux9ULZvRgmIgZeUczoKpzYSlAlpp3z-1dN-x9y1gKceTLBGSXwXT75UoKj_6v54YiMPgjgXHcMyUH-Zq0G_yFirtH_JapzjBRal1AXWohPsZUUXR-WIUaUPwhCkRpiElR6mkND8S1li71MFPhaQgdPsW9N_Blx49bM_MqlVJ9lHsXaOgLGvBm0y9DlmVObYNLEuZkL4EkSkiNdoDjxSggaaJKgvNXwTrVhDVNShrZhk"
-          ].map((url, i) => (
-            <motion.div 
-              key={i}
-              whileHover={{ scale: 1.05 }}
-              className="aspect-square rounded-2xl overflow-hidden shadow-lg"
-            >
-              <img src={url} alt={`Resultado ${i}`} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all" referrerPolicy="no-referrer" />
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            { name: "Ricardo M.", role: "Engenheiro Mecânico", text: "O curso mudou minha percepção sobre prototipagem. A precisão técnica ensinada é incomparável." },
-            { name: "Juliana S.", role: "Designer de Produto", text: "Finalmente entendi como configurar o fatiador para obter peças funcionais e estéticas ao mesmo tempo." },
-            { name: "Marcos V.", role: "Entusiasta Maker", text: "O suporte dos instrutores e a profundidade do conteúdo sobre manutenção salvaram minha impressora." }
-          ].map((testimonial, i) => (
-            <div key={i} className="bg-surface-container-low p-8 rounded-3xl border border-outline-variant/10 space-y-4">
-              <div className="text-primary opacity-20">
-                <Quote size={40} fill="currentColor" />
-              </div>
-              <p className="text-on-surface italic leading-relaxed">"{testimonial.text}"</p>
-              <div>
-                <p className="font-bold text-on-surface">{testimonial.name}</p>
-                <p className="text-xs text-on-surface-variant uppercase tracking-widest font-bold">{testimonial.role}</p>
-              </div>
-            </div>
-          ))}
         </div>
       </section>
 
