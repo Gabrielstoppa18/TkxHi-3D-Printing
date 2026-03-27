@@ -115,7 +115,7 @@ export function Register() {
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 bg-white rounded-xl p-2 shadow-sm border border-outline-variant/10 flex items-center justify-center">
                   <img 
-                    src="/tkx-round.png"
+                    src="/tkx-round.svg"
                     alt="TkxHi Logo" 
                     className="w-full h-full object-contain"
                   />

@@ -61,7 +61,7 @@ export function Home() {
                 className="absolute top-6 right-6 w-20 h-20 bg-white rounded-full p-3 shadow-2xl z-20 flex items-center justify-center border-4 border-white/50"
               >
                 <img 
-                  src="/tkx-round.png"
+                  src="/tkx-round.svg"
                   alt="TkxHi Mark"
                   className="w-full h-full object-contain"
                 />

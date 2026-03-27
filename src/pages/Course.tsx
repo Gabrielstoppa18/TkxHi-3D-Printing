@@ -16,7 +16,7 @@ export function Course() {
           <div className="inline-flex items-center gap-3 bg-primary/10 text-primary px-4 py-2 rounded-full">
             <div className="w-6 h-6 bg-white rounded-full p-1 flex items-center justify-center">
               <img 
-                src="/tkx-round.png"
+                src="/tkx-round.svg"
                 alt="TkxHi Logo" 
                 className="w-full h-full object-contain"
               />
