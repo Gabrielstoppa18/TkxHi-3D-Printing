@@ -2,8 +2,6 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Home, School, Printer, User } from 'lucide-react';
 import { cn } from '../lib/utils';
-import logoRound from '../lib/pics/TkxHi_round.png';
-import logoSingle from '../lib/pics/TkxHi_single_transp.png';
 
 export function Navbar() {
   const location = useLocation();
@@ -21,13 +19,13 @@ export function Navbar() {
             <img 
               alt="TkxHi Icon" 
               className="w-full h-full object-contain" 
-              src={logoRound}
+              src="/logos/TkxHi_round.png"
             />
           </div>
           <img 
             alt="TkxHi Logo" 
             className="h-6 w-auto" 
-            src={logoSingle}
+            src="/logos/TkxHi_single_transp.png"
           />
         </Link>
         

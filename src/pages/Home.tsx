@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, FlaskConical, CheckCircle, CircleDot, Layers, Factory, Bolt, Brain, Sparkles, Share2, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import logoRound from '../lib/pics/TkxHi_round.png';
 
 export function Home() {
   return (
@@ -62,7 +61,7 @@ export function Home() {
                 className="absolute top-6 right-6 w-20 h-20 bg-white rounded-full p-3 shadow-2xl z-20 flex items-center justify-center border-4 border-white/50"
               >
                 <img 
-                  src={logoRound}
+                  src="/logos/TkxHi_round.png"
                   alt="TkxHi Mark"
                   className="w-full h-full object-contain"
                 />
