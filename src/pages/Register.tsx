@@ -4,7 +4,7 @@ import { Bolt, School, Rocket, Factory, Check, ArrowRight, Loader2, CheckCircle2
 import { Link } from 'react-router-dom';
 import { db, handleFirestoreError, OperationType } from '../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import logoRound from '../assets/TkxHi_round.png';
+import logoRound from '../assets/logo-round.png';
 
 export function Register() {
   const [name, setName] = useState('');
