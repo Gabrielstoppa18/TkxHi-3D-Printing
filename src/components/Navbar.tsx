@@ -2,8 +2,8 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Home, School, Printer, User } from 'lucide-react';
 import { cn } from '../lib/utils';
-import logoRound from '../assets/logo-round.png';
-import logoTransp from '../assets/logo-transp.png';
+import logoRound from '@/src/assets/logo-round.png';
+import logoTransp from '@/src/assets/logo-transp.png';
 
 export function Navbar() {
   const location = useLocation();

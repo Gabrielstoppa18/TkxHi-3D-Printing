@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, FlaskConical, CheckCircle, CircleDot, Layers, Factory, Bolt, Brain, Sparkles, Share2, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import logoRound from '../assets/logo-round.png';
+import logoRound from '@/src/assets/logo-round.png';
 
 export function Home() {
   return (
