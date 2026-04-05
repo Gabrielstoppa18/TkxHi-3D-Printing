@@ -190,7 +190,7 @@ export function Home() {
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary-container rounded-full -translate-y-1/2 translate-x-1/2 opacity-50"></div>
           <div className="relative z-10 max-w-2xl mx-auto">
             <h2 className="font-headline text-3xl md:text-5xl font-bold text-on-primary mb-6">Interessado na próxima turma?</h2>
-            <p className="text-on-primary/80 mb-10 text-lg">Entre na lista de espera e receba o guia técnico 2026 em primeira mão.</p>
+            <p className="text-on-primary/80 mb-10 text-lg">Entre na lista de espera e seja notificado assim que as inscrições para a edição 2026 forem abertas.</p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
                 to="/registro"
