@@ -79,7 +79,7 @@ export function Register() {
                 alt="Maker culture"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute -bottom-4 -right-4 bg-secondary-container p-4 rounded-xl shadow-lg text-on-secondary-container">
+              <div className="absolute bottom-2 right-2 md:-bottom-4 md:-right-4 bg-secondary-container p-4 rounded-xl shadow-lg text-on-secondary-container">
                 <Bolt size={32} />
               </div>
             </div>

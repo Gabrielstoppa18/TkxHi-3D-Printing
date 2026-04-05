@@ -7,7 +7,7 @@ export function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative px-6 py-12 md:py-20 bg-surface overflow-hidden">
+      <section className="relative px-6 pt-24 pb-12 md:pt-32 md:pb-20 bg-surface overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
         <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
           <motion.div
@@ -114,7 +114,7 @@ export function Home() {
               },
               {
                 title: "Manutenção Especializada",
-                desc: "Suporte técnico preventivo e corretivo para impressoras 3D industriais e de mesa.",
+                desc: "Suporte técnico preventivo e corretivo para impressoras 3D industriais e de bancada.",
                 icon: Factory,
                 items: ["Calibração de Precisão", "Upgrade de Hardware"]
               }
@@ -165,7 +165,7 @@ export function Home() {
                 
                 { step: "01", title: "Exploração", icon: Bolt, desc: "Análise de viabilidade técnica e escolha do material ideal para o projeto." },
                 { step: "02", title: "Prototipagem", icon: Brain, desc: "Fatiamento avançado e execução em nossas máquinas de alta fidelidade." },
-                { step: "03", title: "Finalização", icon: Sparkles, desc: "Tratamento de superfície e entrega técnica com laudo de qualidade." }
+                { step: "03", title: "Finalização", icon: Sparkles, desc: "Tratamento de superfície e entrega de qualidade." }
               ].map((item, idx) => (
                 <div key={idx} className="flex gap-6 group">
                   <div className="flex-none w-12 h-12 rounded-full border-2 border-tertiary flex items-center justify-center font-bold text-tertiary group-hover:bg-tertiary group-hover:text-white transition-all">

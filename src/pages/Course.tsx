@@ -59,7 +59,7 @@ export function Course() {
             <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent opacity-60"></div>
           </div>
           
-          <div className="absolute -bottom-4 -right-4 bg-secondary-container text-white p-6 rounded-2xl z-20 shadow-xl max-w-[180px]">
+          <div className="absolute bottom-2 right-2 md:-bottom-4 md:-right-4 bg-secondary-container text-white p-6 rounded-2xl z-20 shadow-xl max-w-[180px]">
             <span className="text-4xl font-black block mb-1">100%</span>
             <span className="text-xs font-bold uppercase tracking-wider leading-none">Prático & Técnico</span>
           </div>
@@ -119,7 +119,7 @@ export function Course() {
               textColor: "text-green-light",
               hoverBorder: "hover:border-green-light/20",
               shadow: "shadow-green-light/20",
-              desc: "Domínio do OrcaSlicer: parâmetros de qualidade, resistência, suportes e calibração avançada."
+              desc: "Introdução ao OrcaSlicer: parâmetros de qualidade, resistência, suportes e calibração avançada."
             }
           ].map((module, idx) => (
             <motion.div
@@ -146,8 +146,8 @@ export function Course() {
             <h2 className="text-4xl font-bold tracking-tight text-on-surface">Especificações Técnicas</h2>
             <div className="space-y-6">
               {[
-                { label: "Materiais Abordados", bgColor: "bg-primary", textColor: "text-primary", dotColor: "bg-primary", items: ["PLA (Foco Prático)", "ABS", "PETG", "TPU", "Nylon", "Policarbonato", "Compósitos"] },
-                { label: "Ecossistema de Software", bgColor: "bg-secondary", textColor: "text-secondary", dotColor: "bg-secondary", items: ["OrcaSlicer (Foco Principal)", "Cura", "PrusaSlicer", "Tinkercad", "Fusion 360", "Blender"] },
+                { label: "Materiais Abordados", bgColor: "bg-primary", textColor: "text-primary", dotColor: "bg-primary", items: ["PLA (Foco Prático)", "ABS", "PETG", "TPU"] },
+                { label: "Ecossistema de Software", bgColor: "bg-secondary", textColor: "text-secondary", dotColor: "bg-secondary", items: ["OrcaSlicer (Foco Principal)", "Cura", "PrusaSlicer"] },
               ].map((spec, idx) => (
                 <div key={idx} className="flex items-start gap-4">
                   <div className={`mt-1 w-2 h-2 rounded-full ${spec.dotColor} flex-shrink-0`}></div>
@@ -171,14 +171,7 @@ export function Course() {
                 </div>
               </div>
             </div>
-            <div className="p-6 bg-white/40 rounded-2xl border border-white/60">
-              <div className="flex items-center gap-4">
-                <div className="text-3xl font-black text-primary">+8h</div>
-                <div className="text-xs font-bold text-on-surface-variant uppercase tracking-widest leading-tight">
-                  Práticas e Presenciais
-                </div>
-              </div>
-            </div>
+
           </div>
 
           <div className="relative hidden lg:flex items-center justify-center">

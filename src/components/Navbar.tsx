@@ -19,13 +19,13 @@ export function Navbar() {
             <img 
               alt="TkxHi Icon" 
               className="w-full h-full object-contain" 
-              src="/tkx-round.svg"
+              src="/tkx-round.png"
             />
           </div>
           <img 
             alt="TkxHi Logo" 
             className="h-6 w-auto" 
-            src="/tkx-transp.svg"
+            src="/tkx-transp.png"
           />
         </Link>
         
